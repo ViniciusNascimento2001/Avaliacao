@@ -1,0 +1,24 @@
+﻿@{
+	//Caso não tenha nenhuma mensagem de erro continua normalmente
+	if (ViewBag.MessageErrorCalculadora == null || ViewBag.MessageErrorCalculadora.Count == 0)
+	{
+
+		<h1 style="color: red;">Calculadora</h1>
+		<p>
+			O resultado da operação @ViewBag.Operation é:
+		</p>
+		<p style="background: purple;padding: 15px; color: white;">
+			@ViewBag.Result
+		</p>
+	}
+	else
+	{
+		//Caso haja erros
+		@foreach (var erro in ViewBag.MessageErrorCalculadora)
+		{
+			<strong>@erro</strong>
+			<br />
+			<br />
+		}
+	}
+}

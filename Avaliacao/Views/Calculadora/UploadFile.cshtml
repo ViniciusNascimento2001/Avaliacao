@@ -1,0 +1,44 @@
+﻿<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <div class="col-md-10">
+            <p>Upload de arquivo:</p>
+            <input type="file" name="file" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            <input type="submit" value="Upload" />
+        </div>
+    </div>
+</form>
+<br />
+@{
+    //Caso não tenha nenhuma mensagem de erro continua normalmente
+    if (ViewBag.MessageErrorUpload == null)
+    {
+        if (ViewBag.Names != null && ViewBag.Names.Length > 0)
+        {
+            <p>Os nomes dentro dos arquivos:</p>
+            <ol>
+                @for (int i = 0; i < ViewBag.Names.Length; i++)
+                {
+                    <li>@ViewBag.Names[i]</li>
+                }
+            </ol>
+
+        }
+        else
+        {
+            //Verificando se algum arquivo foi subido ou nao para aparecer a mensagem
+            if (ViewBag.Names != null)
+            {
+                <p>Nenhum nome encontrado</p>
+            }
+        }
+    }
+    else
+    {
+        //Caso haja erro
+        <strong>@ViewBag.MessageErrorUpload</strong>
+    }
+}
